@@ -1,0 +1,13 @@
+{
+  "batch_size": 32,
+  "num_workers": 2,
+  "dropout": 0.5,
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "lr_patience": 3,
+  "lr_factor": 0.5,
+  "epochs": 30,
+  "early_stop_patience": 7,
+  "save_dir": "output",
+  "experiment": "exp_01"
+}
