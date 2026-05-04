@@ -366,6 +366,7 @@ Interface développée avec **Gradio** permettant de tester le modèle en temps 
 ---
 
 ## Demo Dashboard :
-## Demo 🎥
-![Demo](modèle cnn-demo.gif)
+![Dashboard Demo](modèle cnn-demo.gif)
+
+
 
