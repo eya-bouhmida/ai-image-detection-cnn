@@ -360,10 +360,10 @@ Interface développée avec **Gradio** permettant de tester le modèle en temps 
 ## 👥 Équipe
 
 - **Eya Bouhmida**
-- *(Ajoute les noms de tes coéquipiers)*
+- **Sarra Lamouchi**
+- Lien github du Sarra :
 
 ---
 
-## 📄 Licence
+## Demo Dashboard :
 
-MIT License — libre d'utilisation et de modification.
