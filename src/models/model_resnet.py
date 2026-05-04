@@ -1,40 +1,30 @@
-import torch
 import torch.nn as nn
 from torchvision import models
 
 
-class FaceDetectorResNet(nn.Module):
-    """
-    ResNet50 pré-entraîné sur ImageNet.
-    On remplace la dernière couche pour la détection FAKE/REAL.
-    """
-    def __init__(self, dropout=0.5, freeze_backbone=False):
+class FaceDetectorResNet18(nn.Module):
+    def __init__(self, dropout=0.5):
         super().__init__()
 
-        # Charge ResNet50 pré-entraîné
-        self.backbone = models.resnet50(weights=models.ResNet50_Weights.IMAGENET1K_V1)
+        self.backbone = models.resnet18(
+            weights=models.ResNet18_Weights.IMAGENET1K_V1
+        )
 
-        # Gèle le backbone si demandé (transfer learning pur)
-        if freeze_backbone:
-            for param in self.backbone.parameters():
-                param.requires_grad = False
-
-        # Remplace la dernière couche (1000 classes → 1 logit)
-        in_features = self.backbone.fc.in_features  # 2048
+        in_features = self.backbone.fc.in_features  # 512
         self.backbone.fc = nn.Sequential(
-            nn.Linear(in_features, 512),
-            nn.BatchNorm1d(512),
+            nn.Linear(in_features, 256),
+            nn.BatchNorm1d(256),
             nn.ReLU(),
             nn.Dropout(dropout),
-            nn.Linear(512, 1)   # logit brut → sigmoid dans la loss
+            nn.Linear(256, 1)
         )
 
     def forward(self, x):
         return self.backbone(x)  # (B, 1)
 
 
-def build_resnet(dropout=0.5, freeze_backbone=False):
-    return FaceDetectorResNet(dropout=dropout, freeze_backbone=freeze_backbone)
+def build_resnet18(dropout=0.5):
+    return FaceDetectorResNet18(dropout=dropout)
 
 
 def count_params(model):
