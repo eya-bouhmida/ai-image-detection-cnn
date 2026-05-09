@@ -364,6 +364,6 @@ Interface développée avec **Gradio** permettant de tester le modèle en temps 
 
 ---
 
-## 📄 Licence
+## Demo Dashboard
 
-MIT License — libre d'utilisation et de modification.
+![Dashboard Demo](dashboard-demo.gif)
